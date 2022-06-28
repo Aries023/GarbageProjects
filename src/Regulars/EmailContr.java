@@ -52,4 +52,23 @@ public class EmailContr {
         }
     }
 
+    // this metod will find all numbers in text
+    public void numbersInText(String arg){
+        pattern = Pattern.compile("\\d+"); // not only one but groups numbers
+        matcher = pattern.matcher(arg);
+
+        // is there number?
+        boolean found = false;
+
+        // all the time when i find number..
+        while (matcher.find()){
+            System.out.println("numero: " + matcher.group());
+            found = true;
+        }
+        // if there is no one number
+        if (!found){
+            System.out.println("there is no one number!");
+        }
+    }
+
 }
