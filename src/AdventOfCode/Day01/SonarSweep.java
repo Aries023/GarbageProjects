@@ -1,30 +1,38 @@
 package AdventOfCode.Day01;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class SonarSweep {
-    public void howManyIncrements(String arg){
+    public static void main(String[] args) throws FileNotFoundException {
 
-        int increments = 0;  // how many increments
-        boolean first = true; // if i found first number ( int b is not inicialized yet)
-
-        int a=0; // last number
+        int a = 0; // last number
         int b; // actual number
+        int increments = 0;
+        boolean first = true; // if its first time
 
-        // spilit String lines and put it into array (pole)
-        String [] arrayRay = arg.split("\\n");
+        // make a path into String fileName
+        String fileName = "C:\\Users\\Peter\\IdeaProjects\\GarbageProjects\\src\\AdventOfCode\\Day01\\day1.txt";
 
-        for (String s :arrayRay){
-       b = Integer.parseInt(s); // parase String to int, there could be a ERROR!! its not into try/catch
+        // input path to File object..
+        File fileIn = new File(fileName);
 
-            // if you get first number
-       if (first){
-           a = b;
-           first=false;
-       }
-       // if actual number is bigest then last, increment ++
-       if (a<b)
-           ++increments;
+        // input File object to Scanner
+        Scanner sc = new Scanner(fileIn);
 
-       a = b; // actual number become to last number
+        while (sc.hasNext()){
+            b = sc.nextInt(); // every round b take another line number
+            // if its first round (a is 0 soo i its take b value becose a = b is not a < b) so its dont take increment first time..
+            if (first){
+                a = b;
+                first= false;
+            }
+            // if acrual numeber is bigest then last
+            if (a<b){
+                ++increments; // add increment
+            }
+            a = b;
         }
         System.out.println(increments);
     }
