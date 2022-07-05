@@ -33,9 +33,9 @@ public class Dive {
         System.out.println("down: " + down);
         System.out.println("up: " + up);
 
-        int depht = down -up; // if its negative, switch values
+        int depht = down -up; // if its negative, your submarine is above the sea...
 
         System.out.println("depht: " + depht);
-        System.out.println("Multyflaing: " + (depht * forward));
+        System.out.println("Answer part one: " + (depht * forward)); // answer part one
     }
 }
