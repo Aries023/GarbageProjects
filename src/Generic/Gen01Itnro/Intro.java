@@ -9,5 +9,13 @@ public class Intro  {
         IntroGenerica<Integer> intTest = new IntroGenerica<>();
         intTest.setObj(88);
         System.out.println("Integer: " + intTest.getObj());
+
+        // Raw test
+        MultipleGeneric testRaw = new MultipleGeneric();
+        testRaw.add("Peter", 29);
+        testRaw.get();
+
+        MultipleGeneric<String,Integer> test2 = new MultipleGeneric<>();
+        test2.add("Peter",29);
     }
 }
