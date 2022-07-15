@@ -1,4 +1,4 @@
-package Generic.gen02;
+package Generic.Gen02;
 
 public class GenericTester <O extends Dog>{
     private O object;
