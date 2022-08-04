@@ -34,5 +34,13 @@ public class Main {
                 .map(Optional::ofNullable)
                 // ak nie je null tak vypis (ak je null vo vnutry tak ho ale vypise *priklad null kika*)ak je null normalne hodi chybu
                 .forEach(t -> t.ifPresent(System.out::println));
+
+        System.out.println("..............................");
+
+        //ako sa dostat ku vnutru Optional
+        osoby.stream()
+                .map(Optional::ofNullable)
+                .distinct()
+                .forEach(tt -> tt.ifPresent(pr -> System.out.println(pr.getName() +" "+ pr.lastName +" "+ pr.age)));
     }
 }
