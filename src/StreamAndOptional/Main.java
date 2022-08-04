@@ -1,9 +1,6 @@
 package StreamAndOptional;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,6 +12,7 @@ public class Main {
                 new Osoba("Mato", "Facho",34),
                 new Osoba("Kika", "Mlada",18), // 1 Kika..
                 new Osoba("Kika", "Mlada",18), // 2 ina Kika.. !
+                new Osoba(null, null,18), //  null kika
                 o, // 1
                 o, // 2
                 new Osoba("Marek", "keks",60)
@@ -27,5 +25,14 @@ public class Main {
                 .distinct() // kazdy objekt (osoba) moze byt iba raz
                 .sorted(Comparator.comparing(Osoba::getAge)) // zoradenie podla veku
                 .forEach(k -> System.out.println(k.getName() + " " +k.getLastName() + " " + k.getAge() + " Kompletna osoba: " + k));
+
+        System.out.println("..................");
+
+        // stream
+        osoby.stream()
+                // pretypovanie na Optional
+                .map(Optional::ofNullable)
+                // ak nie je null tak vypis (ak je null vo vnutry tak ho ale vypise *priklad null kika*)ak je null normalne hodi chybu
+                .forEach(t -> t.ifPresent(System.out::println));
     }
 }
