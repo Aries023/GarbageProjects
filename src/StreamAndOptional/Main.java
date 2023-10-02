@@ -42,5 +42,19 @@ public class Main {
                 .map(Optional::ofNullable)
                 .distinct()
                 .forEach(tt -> tt.ifPresent(pr -> System.out.println(pr.getName() +" "+ pr.lastName +" "+ pr.age)));
+
+
+        List <Integer> vek = osoby.stream()
+                .filter( p -> p.getAge() > 17)
+                .distinct()
+                .sorted(Comparator.comparing(Osoba ::getAge))
+                .map(Osoba::getAge)
+                .toList();
+
+        vek.forEach(System.out::println);
+
+        Optional<String> sova = Optional.of("sova");
+        sova.ifPresent( sov -> System.out.println(sova));
+        System.out.println(sova.get());
     }
 }
